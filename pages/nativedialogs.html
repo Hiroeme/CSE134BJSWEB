@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+
+<html xml:lang="en" lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <title>TestingPage</title>
+        <link href="../images/favicon.ico" rel="icon">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.1/purify.js"></script>
+
+    </head>
+
+    <body>
+        <header>
+            <h1>Simple Dialogs?</h1>
+
+            <hr>
+
+            <nav>
+                <ul>
+                    <li>
+                        <a href="../home.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="education.html">Education</a>
+                    </li>
+                    <li>
+                        <a href="experience.html">Experience</a>
+                    </li>
+                    <li>
+                        <a href="aboutme.html">About Me</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact</a>
+                    </li>
+                    <li>
+                        <a href="nativedialogs.html">Testing</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <hr>
+
+        </header>
+
+        <main id="container">
+
+            <h2>Part 1:</h2>
+            <div>
+                <button id="alert-button">Alert</button>
+                <button id="confirm-button">Confirm</button>
+                <button id="prompt-button">Prompt</button>
+                <button id="sprompt-button">Safer Prompt</button>
+            </div>
+
+            <br>
+            <output id="output"></output>
+
+
+            <hr>
+
+            <h2>Part 2:</h2>
+            <div>
+                <button id="alert-button2">Alert</button>
+                <button id="confirm-button2">Confirm</button>
+                <button id="prompt-button2">Prompt</button>
+
+            </div>
+
+
+            <div id="app"></div>
+
+            <template id="template">
+                <dialog open id="dialog">
+                    <form onsubmit="return false">
+                        <h3 class="title"></h3>
+
+                        <div class="prompt">
+                            <label for="fname"></label>
+                            <input value="" type="text" id="fname" name="fname">
+                        </div>
+
+                        <br>
+
+                        <div>
+                            <button id="cancel"></button>
+                            <button id="ok"></button>
+                        </div>
+
+
+                    </form>
+                </dialog>
+
+                <br>
+                <output id="output2"></output>
+            </template>
+
+
+
+            <br>
+
+            <hr>
+
+            <h2>Part 3:</h2>
+
+            <p><a class="navbar-link" href="../pages/crud.html">CRUD</a></p>
+
+            <br>
+
+            <hr>
+
+
+            <h2>Part 4:</h2>
+
+            <p><a class="navbar-link" href="../pages/styledcrud.html">STYLEDCRUD</a></p>
+
+
+        </main>
+
+        <script src="../js/script.js"></script>
+        <script type="module">
+            import { showAlertDialog, showConfirmDialog, showPromptDialog } from '../js/customdialog.js'
+
+
+            const result = document.getElementById("app");
+            const customAlert = document.getElementById("alert-button2");
+            const customConfirm = document.getElementById("confirm-button2");
+            const customPrompt = document.getElementById("prompt-button2");
+
+            var temp = document.getElementById("template").content;
+            customAlert.addEventListener('click', () => {
+
+                var copyTemp = document.importNode(temp, true);
+
+                showAlertDialog(copyTemp);
+
+                result.appendChild(copyTemp);
+            });
+
+            customConfirm.addEventListener('click', () => {
+
+                result.textContent = '';
+                var copyTemp = document.importNode(temp, true);
+
+                showConfirmDialog(copyTemp, result);
+
+                result.appendChild(copyTemp);
+            })
+
+            customPrompt.addEventListener('click', () => {
+
+                result.textContent = '';
+                var copyTemp = document.importNode(temp, true);
+
+                showPromptDialog(copyTemp, result);
+
+                result.appendChild(copyTemp);
+            })
+
+
+        </script>
+    </body>
+
+</html>

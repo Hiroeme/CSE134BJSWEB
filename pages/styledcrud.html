@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+
+
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <title>Styled CRUD</title>
+        <link href="../images/favicon.ico" rel="icon">
+        <link href="../css/crudstyles.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.1/purify.js"></script>
+
+
+    </head>
+
+
+    <body>
+
+        <main id="container">
+            <div class="app">
+                <h2>Styled Blog App</h2>
+
+                <button id="addnew">Add New Adventure</button>
+
+                <h3>Adventures</h3>
+
+                <div id="tasks">
+
+                    <ul id="list-items"></ul>
+
+                </div>
+            </div>
+
+            <dialog id="dialog">
+                <form onsubmit="return false">
+                    <div class="formcontainer">
+                        <div class="content">
+
+                            <h3>Add New Adventure</h5>
+
+                                <div class="">
+                                    <p>Title</p>
+                                    <input type="text" value="" id="textInput">
+                                    <div id="msg"></div>
+                                    <br>
+                                    <p>Date</p>
+                                    <input type="date" value="" id="dateInput">
+                                    <br>
+                                    <p>Summary</p>
+                                    <textarea cols="30" rows="10" value="" id="textarea"></textarea>
+                                </div>
+
+                                <div class="buttons">
+                                    <button id="closebtn">Close</button>
+                                    <button id="addbtn">Add</button>
+                                    <button id="editbtn">Edit</button>
+                                </div>
+                        </div>
+                    </div>
+                </form>
+            </dialog>
+
+
+        </main>
+
+        <script type="module">
+
+
+            import { openNew, closeDialog, addItem } from "../js/blog.js"
+
+            const main = document.getElementById("container")
+            document.getElementById("addnew").addEventListener('click', () => {
+                openNew();
+            });
+
+            document.getElementById("closebtn").addEventListener('click', () => {
+                closeDialog();
+            })
+
+            document.getElementById("addbtn").addEventListener('click', () => {
+                addItem();
+            })
+
+
+
+        </script>
+
+    </body>
+
+</html>
